@@ -1,39 +1,21 @@
-class Solution {
-public:
+int totalHammingDistance(int* nums, int numsSize) {
     
-    void int2binary(int k,int a[]){
-        if(k == 0 || k == 1)
+    
+    int totalHamDis=0;
+   
+    while(true)
+    {
+        int zero[2]={0};                //每轮都得清0，重新对位重记
+        int zeroCount=0;                    //取决于最大的那个数,但每轮重新记录为0的数
+        for(int i=0; i<numsSize; i++)
         {
-            a[0] = k;
-            return;
+            if(nums[i] == 0)
+                zeroCount++;
+            zero[nums[i]%2]++;
+            nums[i] = nums[i] >> 1;
         }
-        int i = 0, m;
-        while(k != 1)
-        {
-            m = k%2;
-            a[i++] = m;
-            k = k/2;
-        }
-        a[i] = 1;
+        totalHamDis += zero[0] * zero[1];
+        if(zeroCount == numsSize)
+            return totalHamDis;
     }
-    int hammingDistance(int x, int y) {
-        int count=0 ,a[32],b[32] ;
-        memset(a,0,sizeof(a));
-        memset(b,0,sizeof(b));
-        
-        int2binary(x,a);
-        int2binary(y,b);
-        for(int i=0; i < 32; i++)
-            if(a[i] != b[i])
-                count++;
-        return count;
-    }
-
-    int totalHammingDistance(vector<int>& nums) {
-        int result=0;
-        for(int i=0;i<nums.size();i++)
-            for(int j = i+1;j<nums.size();j++)
-                result+=hammingDistance(nums[i],nums[j]);
-        return result;
-    }
-};
+}
