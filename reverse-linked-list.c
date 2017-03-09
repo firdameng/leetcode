@@ -6,17 +6,13 @@
  * };
  */
  
- //迭代版
+ //递归版
 struct ListNode* reverseList(struct ListNode* head) {
-    struct ListNode *pre = NULL, *cur = head, *next;
+    struct ListNode *tail;
     if(head == NULL || head->next == NULL)
         return head;
-    while(cur)
-    {
-        next = cur->next;
-        cur->next = pre;
-        pre = cur;
-        cur = next;         //记录cur->next作用
-    }
-    return pre;
+    tail = reverseList(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return tail;
 }
