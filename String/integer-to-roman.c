@@ -45,8 +45,6 @@ int parseRule(char *rule, int weight, char *t_res)
 int my_pow(int base,int exponent)           //pow函数好像用得有点问题，(int)pow(10,3) 传参成了99
 {
     int sum = 1;
-    if(exponent ==0)
-        return 1;
     for(int i = 0; i<exponent;i++)
         sum*=base;
     return sum;
