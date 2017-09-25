@@ -4,6 +4,31 @@
 *  
 */
 
+// python —— other
+/* class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+            
+        %
+        % ss = ['abcd','abg','abcigk'];
+        %   zip(*ss)
+        %  [('a','a','a'),('b','b','b'),('c','g','c')]
+        %
+        %
+        for i, letter_group in enumerate(zip(*strs)):  
+            
+            if len(set(letter_group)) > 1: % 刚好找到各字符串同列字符不相等的那一列
+                return strs[0][:i]
+        else:
+            return min(strs)               % 按最小字符串分割出来的tuple都满足了，取最小字符串
+        */
+
+
 // other 
 char* longestCommonPrefix(char** strs, int strsSize) {
     char curr;
